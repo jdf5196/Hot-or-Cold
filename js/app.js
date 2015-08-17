@@ -48,7 +48,10 @@ $(document).ready(function(){
         $('#userGuess').val('');
         return;
   		}
-  		else if (userNumber == randomNumber) {
+      $('#count').text((parseInt($('#count').text())+1));
+      $('#guessList').append('<li>'+userNumber+'</li>');
+      
+  		if (userNumber == randomNumber) {
   			$('#feedback').text("Correct! " + randomNumber);
   			$('#guessButton').prop('disabled', true);
         return;
