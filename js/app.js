@@ -71,8 +71,6 @@ $(document).ready(function(){
   		else {
   			$('#feedback').text("You're freezing...");
   		};	
-  		$('#count').text((parseInt($('#count').text())+1));
-  		$('#guessList').append('<li>'+userNumber+'</li>')
   		$('#userGuess').val('')
 
   	});
