@@ -23,7 +23,9 @@ $(document).ready(function(){
   		console.log(randomNumber);
   		$("#feedback").text("Make your Guess!");
   		$('#count').text(0);
+      $('#userGuess').val('');
   		$('#guessList').html('');
+      $('#guessButton').prop('disabled', false);
   	});
 
   	/*--- Guess Button Click ---*/
@@ -33,16 +35,23 @@ $(document).ready(function(){
 
   		if(isNaN(userNumber)) {
   			$('#feedback').text("Enter a Number");
+        $('#userGuess').val('');
+        return;
   		}
   		else if (userNumber > 100) {
   			$('#feedback').text("Enter a Number between 1 and 100");
+        $('#userGuess').val('');
+        return;
   		}
   		else if (userNumber < 1) {
   			$('#feedback').text("Enter a Number between 1 and 100");
+        $('#userGuess').val('');
+        return;
   		}
   		else if (userNumber == randomNumber) {
   			$('#feedback').text("Correct! " + randomNumber);
-  			found=true
+  			$('#guessButton').prop('disabled', true);
+        return;
   		}
   		else if (userNumber >= randomNumber -5 && userNumber <= randomNumber +5) {
   			$('#feedback').text("You're on Fire!");
@@ -58,11 +67,6 @@ $(document).ready(function(){
   		}
   		else {
   			$('#feedback').text("You're freezing...");
-  		}
-  		if (found = true){
-  			function disable(){
-  				$('#guessButton').disabled = true;
-  			}
   		};	
   		$('#count').text((parseInt($('#count').text())+1));
   		$('#guessList').append('<li>'+userNumber+'</li>')
